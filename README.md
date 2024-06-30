@@ -2,6 +2,15 @@
 
 # QBCORE Job using ox_lib
 
+ Join the Discord for support or questions!
+ DISCORD : https://discord.gg/hya9t8XfH8
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Simple and eazy setup!
+ Drag bd-irishpubjob into your resource folder and ensure bd-irishpubjob
+LOAD AFTER QB-TARGET & INVENTORY
+- ensure [qb]
+- ensure bd-irishpubjob
+
 Copy and Paste into qb-core --> shared --> items.lua
 ```
 ----- | IRISH PUB ITEMS | -----
