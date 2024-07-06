@@ -19,8 +19,8 @@ Config.BoxUpperWorth = 15 -- How much the max amount should be per box you picku
 Config.BoxLowerWorth = 5 -- How much the lowest amount should be per box you pickup | ONLY MATTERS IF HavePayOption is true
 Config.MinBoxesPerStop = 1 -- Minumum amount of boxes at each spot
 Config.MaxBoxesPerStop = 3 -- Maximum amount of boxes at each spot
-Config.SuppliesAmountMin = 10 -- Minumum amount of supplies to recieve at end of route
-Config.SuppliesAmountMax = 50 -- Maximum amount of supplies to recieve at end of route
+Config.SuppliesAmountMin = 3 -- Minumum amount of supplies to recieve at end of route
+Config.SuppliesAmountMax = 10 -- Maximum amount of supplies to recieve at end of route
 Config.Vehicle = 'baller' -- Vehicle name used to spawn
 
 ----- | TARGET LOCATIONS | -----
