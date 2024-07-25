@@ -45,7 +45,7 @@ Copy and Paste into qb-core --> shared --> items.lua
     ip_steakburger               = { name = 'ip_steakburger',  label = 'Steak Burger', weight = 125, type = 'item', image = 'ip_steakburger.png', unique = false, useable = true, shouldClose = true, description = 'Burger Buns with Steak inside'},
     ip_steaksandwich             = { name = 'ip_steaksandwich',  label = 'Steak Sandwich', weight = 125, type = 'item', image = 'ip_steaksandwich.png', unique = false, useable = true, shouldClose = true, description = 'No its not a phili cheesesteak'},
     ip_tavish_irish_whiskey      = { name = 'ip_tavish_irish_whiskey',  label = 'Irish Whiskey', weight = 25, type = 'item', image = 'ip_tavish_irish_whiskey.png', unique = false, useable = true, shouldClose = true, description = 'Classic Irish Whiskey'},
-    ip_wineglass                 = { name = 'ip_wingeglass',  label = 'Wine Glass', weight = 15, type = 'item', image = 'ip_wineglass.png', unique = false, useable = true, shouldClose = true, description = 'Red Wine'},
+    ip_wineglass                 = { name = 'ip_wineglass',  label = 'Wine Glass', weight = 15, type = 'item', image = 'ip_wineglass.png', unique = false, useable = true, shouldClose = true, description = 'Red Wine'},
     ip_supplies                  = { name = 'ip_supplies',  label = 'Irish Pub Supplies', weight = 750, type = 'item', image = 'ip_supplies.png', unique = false, useable = false, shouldClose = true, description = 'Supplies for the Irish Pub'},
 ```
 Copy and Paste into qb-core --> shared --> jobs.lua

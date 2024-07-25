@@ -1,4 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+local ox_inventory = exports.ox_inventory
 local Routes = {}
 
 local function CanPay(Player)
@@ -87,53 +88,105 @@ QBCore.Functions.CreateCallback('bd-irishpubjob:server:EndShift', function(sourc
     cb(status)
 end)
 
-RegisterNetEvent('bd-irishpubjob:server:PayShift', function(continue)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    local CitizenId = Player.PlayerData.citizenid
-    local amount = math.random(Config.SuppliesAmountMin, Config.SuppliesAmountMax)
-    if Routes[CitizenId] ~= nil then
-        if tonumber(Routes[CitizenId].stopsCompleted) < tonumber(Routes[CitizenId].totalNumberOfStops) then
+if Config.InventorySystem == 'ox' then
+    RegisterNetEvent('bd-irishpubjob:server:PayShift', function(continue)
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        local CitizenId = Player.PlayerData.citizenid
+        local amount = math.random(Config.SuppliesAmountMin, Config.SuppliesAmountMax)
+        if Routes[CitizenId] ~= nil then
+            if tonumber(Routes[CitizenId].stopsCompleted) < tonumber(Routes[CitizenId].totalNumberOfStops) then
+            end
+            if continue then
+            end
+            local totalToPay = Routes[CitizenId].actualPay
+            Player.Functions.AddMoney('bank', totalToPay, 'supplyroute-payslip')
+            ox_inventory:AddItem(src, 'ip_supplies', amount)
+            lib.notify(src,{
+                id = 'irishpub_supplier',
+                title = 'Irish Pub Supplier',
+                description = 'You got $'..totalToPay..' added to your bank account! & '..amount..' of supplies',
+                showDuration = false,
+                position = 'top',
+                style = {
+                    backgroundColor = '#141517',
+                    color = '#228B22',
+                    ['.description'] = {
+                      color = '#909296'
+                    }
+                },
+                icon = 'bottle-droplet',
+                iconColor = '#228B22'
+            })
+            Routes[CitizenId] = nil
+        else
+            lib.notify(source,{
+                id = 'irishpub_supplier',
+                title = 'Irish Pub Supplier',
+                description = 'You never requested a route!',
+                showDuration = false,
+                position = 'top',
+                style = {
+                    backgroundColor = '#141517',
+                    color = '#228B22',
+                    ['.description'] = {
+                      color = '#909296'
+                    }
+                },
+                icon = 'bottle-droplet',
+                iconColor = '#228B22'
+            })
         end
-        if continue then
+    end)
+elseif Config.InventorySystem == 'qb' then
+    RegisterNetEvent('bd-irishpubjob:server:PayShift', function(continue)
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        local CitizenId = Player.PlayerData.citizenid
+        local amount = math.random(Config.SuppliesAmountMin, Config.SuppliesAmountMax)
+        if Routes[CitizenId] ~= nil then
+            if tonumber(Routes[CitizenId].stopsCompleted) < tonumber(Routes[CitizenId].totalNumberOfStops) then
+            end
+            if continue then
+            end
+            local totalToPay = Routes[CitizenId].actualPay
+            Player.Functions.AddMoney('bank', totalToPay, 'supplyroute-payslip')
+            exports['qb-inventory']:AddItem(src, 'ip_supplies', amount, false, false)
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['ip_supplies'], 'add', amount)
+            lib.notify(src,{
+                id = 'irishpub_supplier',
+                title = 'Irish Pub Supplier',
+                description = 'You got $'..totalToPay..' added to your bank account! & '..amount..' of supplies',
+                showDuration = false,
+                position = 'top',
+                style = {
+                    backgroundColor = '#141517',
+                    color = '#228B22',
+                    ['.description'] = {
+                      color = '#909296'
+                    }
+                },
+                icon = 'bottle-droplet',
+                iconColor = '#228B22'
+            })
+            Routes[CitizenId] = nil
+        else
+            lib.notify(source,{
+                id = 'irishpub_supplier',
+                title = 'Irish Pub Supplier',
+                description = 'You never requested a route!',
+                showDuration = false,
+                position = 'top',
+                style = {
+                    backgroundColor = '#141517',
+                    color = '#228B22',
+                    ['.description'] = {
+                      color = '#909296'
+                    }
+                },
+                icon = 'bottle-droplet',
+                iconColor = '#228B22'
+            })
         end
-        local totalToPay = Routes[CitizenId].actualPay
-        Player.Functions.AddMoney('bank', totalToPay, 'supplyroute-payslip')
-        exports['qb-inventory']:AddItem(src, 'ip_supplies', amount, false, false)
-        TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items['ip_supplies'], 'add', amount)
-        lib.notify(src,{
-            id = 'irishpub_supplier',
-            title = 'Irish Pub Supplier',
-            description = 'You got $'..totalToPay..' added to your bank account! & '..amount..' of supplies',
-            showDuration = false,
-            position = 'top',
-            style = {
-                backgroundColor = '#141517',
-                color = '#228B22',
-                ['.description'] = {
-                  color = '#909296'
-                }
-            },
-            icon = 'bottle-droplet',
-            iconColor = '#228B22'
-        })
-        Routes[CitizenId] = nil
-    else
-        lib.notify(source,{
-            id = 'irishpub_supplier',
-            title = 'Irish Pub Supplier',
-            description = 'You never requested a route!',
-            showDuration = false,
-            position = 'top',
-            style = {
-                backgroundColor = '#141517',
-                color = '#228B22',
-                ['.description'] = {
-                  color = '#909296'
-                }
-            },
-            icon = 'bottle-droplet',
-            iconColor = '#228B22'
-        })
-    end
-end)
+    end)
+end
