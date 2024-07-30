@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-if Config.InventorySystem == 'ox' then
+if Config.TargetSystem == 'ox' then
     ----- | CREATING COOK MENU LOCATION | -----
 	exports.ox_target:addBoxZone({
 		coords = vector4(826.19, -108.93, 79.81, 332.13),
@@ -19,7 +19,7 @@ if Config.InventorySystem == 'ox' then
 			},
 		}
 	})
-elseif Config.InventorySystem == 'qb' then
+elseif Config.TargetSystem == 'qb' then
     ----- | CREATING COOK MENU LOCATION | -----
     exports['qb-target']:AddBoxZone("IrishPubCookMenu", vector3(826.36, -108.98, 79.77), 0.9, 0.9, {
         name = "IrishPubCookMenu",
