@@ -1056,4 +1056,304 @@ elseif Config.InventorySystem == 'qb' then
             iconColor = '#228B22'
         })
     end)
+elseif Config.InventorySystem == 'qs' then
+    -- COFFEE --
+    RegisterNetEvent('bd-irishpubjob:server:makeCoffee', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_coffee", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have poured Coffee',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- AM BEER --
+    RegisterNetEvent('bd-irishpubjob:server:MakeAMBeer', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_ambeer", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made AM Beer',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- DUSCHE --
+    RegisterNetEvent('bd-irishpubjob:server:MakeDusche', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_dusche", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Dusche Beer',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- LOGGER --
+    RegisterNetEvent('bd-irishpubjob:server:MakeLogger', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_logger", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Logger Beer',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- PATRIOT --
+    RegisterNetEvent('bd-irishpubjob:server:MakePatriot', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_patriotbeer", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Patriot Beer',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- PISSWASSER --
+    RegisterNetEvent('bd-irishpubjob:server:MakePisswaser', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_pisswaser", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Pisswaser Beer',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- PISSWASSER DARK --
+    RegisterNetEvent('bd-irishpubjob:server:MakePisswaserDark', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_pisswaser1", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Pisswaser Dark Beer',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- PISSWASSER LIGHT --
+    RegisterNetEvent('bd-irishpubjob:server:MakePisswaserLight', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_pisswaser2", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Pisswaser Light Beer',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- IRISH CREAM --
+    RegisterNetEvent('bd-irishpubjob:server:MakeIrishCream', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_blarneys", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Irish Cream',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- IRISH CIDER --
+    RegisterNetEvent('bd-irishpubjob:server:MakeCider', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_irishcider", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Irish Cider',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- RED WINE --
+    RegisterNetEvent('bd-irishpubjob:server:MakeRedWine', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_wineglass", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Red Wine',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- SCOTCH WHISKEY --
+    RegisterNetEvent('bd-irishpubjob:server:MakeScotchWhiskey', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_macbeth_scotch_whiskey", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Scotch Whiskey',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
+    -- IRISH WHISKEY --
+    RegisterNetEvent('bd-irishpubjob:server:MakeIrishWhiskey', function()
+        local Player = QBCore.Functions.GetPlayer(source)
+        if not Player then return end
+        Player.Functions.RemoveItem("ip_supplies", 1)
+        Player.Functions.AddItem("ip_tavish_irish_whiskey", 6)
+        lib.notify(source, {
+            id = 'irish_pub',
+            title = 'Irish Pub',
+            description = 'You have made Irish Whiskey',
+            showDuration = false,
+            position = 'top',
+            style = {
+                backgroundColor = '#141517',
+                color = '#228B22',
+                ['.description'] = {
+                  color = '#909296'
+                }
+            },
+            icon = 'bottle-droplet',
+            iconColor = '#228B22'
+        })
+    end)
 end
