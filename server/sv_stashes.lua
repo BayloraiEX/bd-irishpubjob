@@ -108,16 +108,16 @@ elseif Config.InventorySystem == 'qb' then
 elseif Config.InventorySystem == 'qs' then
     -- TRAY 1 --
     RegisterNetEvent("bd-irishpubjob:server:irishpubTray1", function()
-        TriggerEvent("inventory:client:SetCurrentStash", "IrishPub Tray #1")
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", "IrishPub Tray #1", {
+        TriggerClientEvent("inventory:client:SetCurrentStash", "IrishPub Tray #1")
+        TriggerEvent("inventory:server:OpenInventory", "stash", "IrishPub Tray #1", {
             maxweight = 10000,
             slots = 5,
         })
     end)
     -- TRAY 2 --
     RegisterNetEvent("bd-irishpubjob:server:irishpubTray2", function()
-        TriggerEvent("inventory:client:SetCurrentStash", "IrishPub Tray #2")
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", "IrishPub Tray #2", {
+        TriggerClientEvent("inventory:client:SetCurrentStash", "IrishPub Tray #2")
+        TriggerEvent("inventory:server:OpenInventory", "stash", "IrishPub Tray #2", {
             maxweight = 10000,
             slots = 5,
         })
