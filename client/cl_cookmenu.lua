@@ -80,6 +80,66 @@ RegisterNetEvent('bd-irishpubjob:client:OpenCookMenu', function()
     lib.showContext('irishpub_cook_menu')
 end)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+if Config.InventorySystem == 'qs' then
+	RegisterNetEvent('bd-irishpubjob:client:MakeCheeseBurger', function(itemName)
+		local ingredients = QBCore.Functions.HasItem({'ip_supplies'})
+		if ingredients then
+			if lib.progressCircle({
+				duration = 1250,
+				position = 'bottom',
+				useWhileDead = false,
+				canCancel = true,
+				disable = {
+					move = true,
+					car = true,
+					combat = true,
+				},
+				anim = {
+					dict = 'mini@repair',
+					clip = 'fixing_a_player',
+					scenario = 'mini@repair',
+				},
+			}) then
+				TriggerServerEvent('bd-irishpubjob:server:MakeCheeseBurger')
+			else
+				lib.notify({
+					id = 'irish_pub',
+					title = 'Irish Pub',
+					description = 'Turned off the grill',
+					showDuration = false,
+					position = 'top',
+					style = {
+						backgroundColor = '#141517',
+						color = '#228B22',
+						['.description'] = {
+						  color = '#909296'
+						}
+					},
+					icon = 'bottle-droplet',
+					iconColor = '#228B22'
+				})
+			end
+		else
+			lib.notify({
+                id = 'irish_pub',
+                title = 'Irish Pub',
+                description = 'You need 1x Supplies to make Cheese Burger',
+                showDuration = false,
+                position = 'top',
+                style = {
+                    backgroundColor = '#141517',
+                    color = '#228B22',
+                    ['.description'] = {
+                      color = '#909296'
+                    }
+                },
+                icon = 'bottle-droplet',
+                iconColor = '#228B22'
+            })
+		end
+	end)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- | CREATING BURGERS MENU | -----
 lib.registerContext({
     id = 'irishpub_burger_menu',
