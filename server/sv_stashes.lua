@@ -36,7 +36,7 @@ elseif Config.InventorySystem == 'qb' then
         if Player then
             exports['qb-inventory']:OpenInventory(src, stashName, {
                 maxweight = 50000,
-                slots = 15,
+                slots = 5,
             })
         end
     end)
@@ -49,7 +49,7 @@ elseif Config.InventorySystem == 'qb' then
         if Player then
             exports['qb-inventory']:OpenInventory(src, stashName, {
                 maxweight = 50000,
-                slots = 15,
+                slots = 5,
             })
         end
     end)
@@ -104,5 +104,22 @@ elseif Config.InventorySystem == 'qb' then
                 slots = 25,
             })
         end
+    end)
+elseif Config.InventorySystem == 'qs' then
+    -- TRAY 1 --
+    RegisterNetEvent("bd-irishpubjob:server:irishpubTray1", function()
+        TriggerEvent("inventory:client:SetCurrentStash", "IrishPub Tray #1")
+        TriggerServerEvent("inventory:server:OpenInventory", "stash", "IrishPub Tray #1", {
+            maxweight = 10000,
+            slots = 5,
+        })
+    end)
+    -- TRAY 2 --
+    RegisterNetEvent("bd-irishpubjob:server:irishpubTray2", function()
+        TriggerEvent("inventory:client:SetCurrentStash", "IrishPub Tray #2")
+        TriggerServerEvent("inventory:server:OpenInventory", "stash", "IrishPub Tray #2", {
+            maxweight = 10000,
+            slots = 5,
+        })
     end)
 end
