@@ -290,26 +290,50 @@ elseif Config.InventorySystem == 'qb' then
 elseif Config.InventorySystem == 'qs' then
 	-- TRAY 1 --
 	RegisterNetEvent("bd-irishpubjob:client:irishpubTray1", function()
-		TriggerServerEvent('bd-irishpubjob:server:irishpubTray1')
+		TriggerEvent("inventory:client:SetCurrentStash", "irishpubTray1")
+		TriggerServerEvent("inventory:server:OpenInventory", "stash", "irishpubTray1", {
+			maxweight = 10000,
+			slots = 5,
+		})
 	end)
 	-- TRAY 2 --
 	RegisterNetEvent("bd-irishpubjob:client:irishpubTray2", function()
-		TriggerServerEvent('bd-irishpubjob:server:irishpubTray2')
+		TriggerEvent("inventory:client:SetCurrentStash", "irishpubTray2")
+		TriggerServerEvent("inventory:server:OpenInventory", "stash", "irishpubTray2", {
+			maxweight = 10000,
+			slots = 5,
+		})
 	end)
 	-- FRIDGE --
 	RegisterNetEvent("bd-irishpubjob:client:irishpubFridge", function()
-		TriggerServerEvent('bd-irishpubjob:server:irishpubFridge')
+		TriggerEvent("inventory:client:SetCurrentStash", "irishpubFridge")
+		TriggerServerEvent("inventory:server:OpenInventory", "stash", "irishpubFridge", {
+			maxweight = 500000,
+			slots = 50,
+		})
 	end)
 	-- KEG STORAGE --
 	RegisterNetEvent("bd-irishpubjob:client:irishpubKeg", function()
-		TriggerServerEvent('bd-irishpubjob:server:irishpubKeg')
+		TriggerEvent("inventory:client:SetCurrentStash", "irishpubKeg")
+		TriggerServerEvent("inventory:server:OpenInventory", "stash", "irishpubKeg", {
+			maxweight = 750000,
+			slots = 75,
+		})
 	end)
 	-- SHELF STORAGE --
 	RegisterNetEvent("bd-irishpubjob:client:irishpubStorage", function()
-		TriggerServerEvent('bd-irishpubjob:server:irishpubStorage')
+		TriggerEvent("inventory:client:SetCurrentStash", "irishpubStorage")
+		TriggerServerEvent("inventory:server:OpenInventory", "stash", "irishpubStorage", {
+			maxweight = 1000000,
+			slots = 100,
+		})
 	end)
 	-- HEATER --
 	RegisterNetEvent("bd-irishpubjob:client:irishpubHeaterStorage", function()
-		TriggerServerEvent('bd-irishpubjob:server:irishpubHeaterStorage')
+		TriggerEvent("inventory:client:SetCurrentStash", "irishpubHeaterStorage")
+		TriggerServerEvent("inventory:server:OpenInventory", "stash", "irishpubHeaterStorage", {
+			maxweight = 500000,
+			slots = 50,
+		})
 	end)
 end
