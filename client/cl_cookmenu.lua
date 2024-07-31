@@ -84,6 +84,84 @@ if Config.InventorySystem == 'qs' then
 	RegisterNetEvent('bd-irishpubjob:client:MakeCheeseBurger', function()
 		local ingredients = QBCore.Functions.HasItem({'ip_supplies'})
 		if ingredients then
+			TriggerEvent('animations:client:EmoteCommandStart', {"mechanic4"})
+			TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 20.0, "grilling", 0.6)
+			QBCore.Functions.Progressbar("taco_stuff", "No problem..", 8000, false, true, {
+				disableMovement = true,
+				disableCarMovement = false,
+				disableMouse = false,
+				disableCombat = true,
+			}, {}, {}, {}, function() -- Done
+				TriggerServerEvent("bd-irishpubjob:server:MakeCheeseBurger")
+				TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["ip_supplies"], "remove", 1)
+				TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["ip_cheeseburger"], "add", 2)
+				TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+				TriggerEvent('bd-irishpubjob:client:cooking')
+			end, function() -- Cancel
+				QBCore.Functions.Notify("Okay then", "error")
+				TriggerEvent('bd-irishpubjob:client:cooking')
+			end)
+		else		
+			QBCore.Functions.Notify('You missing something.', 'error')
+		end
+	end)
+end
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+----- | CREATING BURGERS MENU | -----
+lib.registerContext({
+    id = 'irishpub_burger_menu',
+    title = 'Burger Menu',
+    menu = 'irishpub_cook_menu',
+    options = {
+        {
+            title = 'Cheese Burger',
+            description = 'You need Supplies to make a Cheese Burger',
+            icon = 'burger',
+            iconColor = 'LightGreen',
+            event = 'bd-irishpubjob:client:MakeCheeseBurger'
+        },
+        {
+            title = 'Bacon Cheese Burger',
+            description = 'You need Supplies to make a Bacon Cheese Burger',
+            icon = 'burger',
+            iconColor = 'LightGreen',
+            event = 'bd-irishpubjob:client:MakeBaconCheeseBurger'
+        },
+        {
+            title = 'Chicken Burger',
+            description = 'You need Supplies to make a Chicken Burger',
+            icon = 'burger',
+            iconColor = 'LightGreen',
+            event = 'bd-irishpubjob:client:MakeChickenBurger'
+        },
+        {
+            title = 'Bacon Chicken Burger',
+            description = 'You need Supplies to make a Bacon Chicken Burger',
+            icon = 'burger',
+            iconColor = 'LightGreen',
+            event = 'bd-irishpubjob:client:MakeBaconChickenBurger'
+        },
+        {
+            title = 'Steak Burger',
+            description = 'You need Supplies to make a Steak Burger',
+            icon = 'burger',
+            iconColor = 'LightGreen',
+            event = 'bd-irishpubjob:client:MakeSteakBurger'
+        },
+        {
+            title = 'Steak Sandwich',
+            description = 'You need Supplies to make a Steak Sandwich',
+            icon = 'bread-slice',
+            iconColor = 'LightGreen',
+            event = 'bd-irishpubjob:client:MakeSteakSandwich'
+        },
+    }
+})
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+if Config.InventorySystem == 'qs' then
+	RegisterNetEvent('bd-irishpubjob:client:MakeCheeseBurger', function(itemName)
+		local ingredients = QBCore.Functions.HasItem({'ip_supplies'})
+		if ingredients then
 			if lib.progressCircle({
 				duration = 1250,
 				position = 'bottom',
@@ -140,56 +218,6 @@ if Config.InventorySystem == 'qs' then
 	end)
 end
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
------ | CREATING BURGERS MENU | -----
-lib.registerContext({
-    id = 'irishpub_burger_menu',
-    title = 'Burger Menu',
-    menu = 'irishpub_cook_menu',
-    options = {
-        {
-            title = 'Cheese Burger',
-            description = 'You need Supplies to make a Cheese Burger',
-            icon = 'burger',
-            iconColor = 'LightGreen',
-            event = 'bd-irishpubjob:client:MakeCheeseBurger'
-        },
-        {
-            title = 'Bacon Cheese Burger',
-            description = 'You need Supplies to make a Bacon Cheese Burger',
-            icon = 'burger',
-            iconColor = 'LightGreen',
-            event = 'bd-irishpubjob:client:MakeBaconCheeseBurger'
-        },
-        {
-            title = 'Chicken Burger',
-            description = 'You need Supplies to make a Chicken Burger',
-            icon = 'burger',
-            iconColor = 'LightGreen',
-            event = 'bd-irishpubjob:client:MakeChickenBurger'
-        },
-        {
-            title = 'Bacon Chicken Burger',
-            description = 'You need Supplies to make a Bacon Chicken Burger',
-            icon = 'burger',
-            iconColor = 'LightGreen',
-            event = 'bd-irishpubjob:client:MakeBaconChickenBurger'
-        },
-        {
-            title = 'Steak Burger',
-            description = 'You need Supplies to make a Steak Burger',
-            icon = 'burger',
-            iconColor = 'LightGreen',
-            event = 'bd-irishpubjob:client:MakeSteakBurger'
-        },
-        {
-            title = 'Steak Sandwich',
-            description = 'You need Supplies to make a Steak Sandwich',
-            icon = 'bread-slice',
-            iconColor = 'LightGreen',
-            event = 'bd-irishpubjob:client:MakeSteakSandwich'
-        },
-    }
-})
 RegisterNetEvent('bd-irishpubjob:client:MakeCheeseBurger', function()
 	if lib.progressCircle({
 		duration = 1250,
