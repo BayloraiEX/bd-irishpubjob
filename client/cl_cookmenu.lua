@@ -81,7 +81,7 @@ RegisterNetEvent('bd-irishpubjob:client:OpenCookMenu', function()
 end)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 if Config.InventorySystem == 'qs' then
-	RegisterNetEvent('bd-irishpubjob:client:MakeCheeseBurger', function(itemName)
+	RegisterNetEvent('bd-irishpubjob:client:MakeCheeseBurger', function()
 		local ingredients = QBCore.Functions.HasItem({'ip_supplies'})
 		if ingredients then
 			if lib.progressCircle({
