@@ -28,7 +28,7 @@ if Config.InventorySystem == 'ox' then
     end)
 elseif Config.InventorySystem == 'qb' then
     -- BAR COUNTER 1 --
-    RegisterNetEvent('bd-irishpubjob:server:Tray1', function(Tray1)
+    RegisterNetEvent('bd-irishpubjob:server:irishpubTray1', function(irishpubTray1)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
         local stashName = 'IrishPub Counter'
@@ -41,7 +41,7 @@ elseif Config.InventorySystem == 'qb' then
         end
     end)
     -- BAR COUNTER 2 --
-    RegisterNetEvent('bd-irishpubjob:server:Tray2', function(Tray2)
+    RegisterNetEvent('bd-irishpubjob:server:irishpubTray2', function(irishpubTray2)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
         local stashName = 'IrishPub Counter 2'
@@ -54,7 +54,7 @@ elseif Config.InventorySystem == 'qb' then
         end
     end)
     -- FRIDGE --
-    RegisterNetEvent('bd-irishpubjob:server:Fridge', function(Fridge)
+    RegisterNetEvent('bd-irishpubjob:server:irishpubFridge', function(irishpubFridge)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
         local stashName = 'IrishPub Fridge'
@@ -67,7 +67,7 @@ elseif Config.InventorySystem == 'qb' then
         end
     end)
     -- KEG --
-    RegisterNetEvent('bd-irishpubjob:server:KegStorage', function(KegStorage)
+    RegisterNetEvent('bd-irishpubjob:server:irishpubKeg', function(irishpubKeg)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
         local stashName = 'IrishPub Keg'
@@ -80,7 +80,7 @@ elseif Config.InventorySystem == 'qb' then
         end
     end)
     -- SHELF STORAGE --
-    RegisterNetEvent('bd-irishpubjob:server:ShelfStorage', function(ShelfStorage)
+    RegisterNetEvent('bd-irishpubjob:server:irishpubStorage', function(irishpubStorage)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
         local stashName = 'IrishPub Shelf Storage'
@@ -93,7 +93,7 @@ elseif Config.InventorySystem == 'qb' then
         end
     end)
     -- HEATER --
-    RegisterNetEvent('bd-irishpubjob:server:HeaterStorage', function(HeaterStorage)
+    RegisterNetEvent('bd-irishpubjob:server:irishpubHeaterStorage', function(irishpubHeaterStorage)
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
         local stashName = 'IrishPub Heater'
