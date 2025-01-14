@@ -1,23 +1,42 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-exports['qb-target']:AddBoxZone("IrishPubRegister", vector3(834.42, -115.83, 79.77), 0.9, 0.9, {
-	name = "IrishPubRegister",
-	heading = 347.27,
-	debugPoly = false,
-	minZ = 79.77 - 2,
-	maxZ = 79.77 + 2,
-}, {
-	options = {
-		{
-            type = "client",
-            event = "bd-irishpubjob:client:bill",
-			icon = "fa-solid fa-cash-register",
-			label = "Register",
-			job = "irishpub",
+if Config.TargetSystem == 'qb' then
+	exports['qb-target']:AddBoxZone("IrishPubRegister", vector3(834.42, -115.83, 79.77), 0.9, 0.9, {
+		name = "IrishPubRegister",
+		heading = 347.27,
+		debugPoly = false,
+		minZ = 79.77 - 2,
+		maxZ = 79.77 + 2,
+	}, {
+		options = {
+			{
+				type = "client",
+				event = "bd-irishpubjob:client:bill",
+				icon = "fa-solid fa-cash-register",
+				label = "Register",
+				job = "irishpub",
+			},
 		},
-	},
-	distance = 2.5
-})
+		distance = 2.5
+	})
+elseif Config.TargetSystem == 'ox' then
+	exports.ox_target:addBoxZone({
+		coords = vector4(834.64, -115.63, 79.79, 329.9),
+		size = vec3(1, 1, 1),
+		rotation = 45,
+		options = {
+			{
+				name = 'irishpub_register',
+				event = 'bd-irishpubjob:client:bill',
+				icon = 'fa-solid fa-cash-register',
+				label = 'Register',
+				groups = {
+					Config.Jobname
+				},
+			},
+		}
+	})
+end
 
 RegisterNetEvent("bd-irishpubjob:client:bill", function()
     local bill = lib.inputDialog('Register', {
