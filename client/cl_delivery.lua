@@ -117,7 +117,13 @@ local function DeliverAnim()
         local CL = Config.Locations["supplyroute"][currentStop]
         hasBox = false
         local pos = GetEntityCoords(ped)
-        exports['qb-target']:RemoveTargetEntity(irishpubVehicle)
+        if Config.TargetSystem == 'ox' then
+            --
+            exports.ox_target:removeGlobalVehicle(irishpubVehicle)
+        elseif Config.TargetSystem == 'qb' then
+            --
+            exports['qb-target']:RemoveTargetEntity(irishpubVehicle)
+        end
         if (amountOfBoxes - 1) <= 0 then
             QBCore.Functions.TriggerCallback('bd-irishpubjob:server:NextStop', function(hasMoreStops, nextStop, newBoxAmount)
                 if hasMoreStops and nextStop ~= 0 then
@@ -225,11 +231,34 @@ local function DeliverAnim()
                     iconColor = '#228B22'
                 })
             end
-            exports['qb-target']:AddCircleZone('boxcrate', vector3(CL.coords.x, CL.coords.y, CL.coords.z), 2.0,{
-                name = 'boxcrate', debugPoly = false, useZ=true}, {
-                options = {{label = 'Grab supply box', icon = 'fa-solid fa-box', action = function() TakeAnim() end}},
-                distance = 2.0
-            })
+            if Config.TargetSystem == 'qb' then
+                --
+                exports['qb-target']:AddCircleZone('boxcrate', vector3(CL.coords.x, CL.coords.y, CL.coords.z), 2.0,{
+                    name = 'boxcrate', debugPoly = false, useZ=true}, {
+                    options = {{label = 'Grab supply box', icon = 'fa-solid fa-box', action = function() TakeAnim() end}},
+                    distance = 2.0
+                })
+            elseif Config.TargetSystem == 'ox' then
+                --
+                exports.ox_target:addBoxZone({
+                    coords = vector4(CL.coords.x, CL.coords.y, CL.coords.z, 2.0),
+                    size = vec3(1, 1, 1),
+                    rotation = 45,
+                    options = {
+                      {
+                        name = 'boxcrate',
+                        icon = 'fa-solid fa-box',
+                        label = 'Grab supply box',
+                        onSelect = {
+                            TakeAnim()
+                        },
+                        groups = {
+                          Config.Jobname
+                        },
+                      },
+                    }
+                  })
+            end
         end
     end
 end
