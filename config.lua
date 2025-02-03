@@ -11,7 +11,7 @@
                               |_|                             
 --]] 
 Config = {}
-Config.InventorySystem = 'qb' -- Supports 'qb' & 'ox' & 'qs'
+Config.InventorySystem = 'qb' -- Supports 'qb' & 'ox'
 Config.TargetSystem = 'qb' -- Supports 'qb' & 'ox' ( Just use ox, its way better )
 
 Config.UseTarget = true -- True = Use Target  | False = Use Polyzones
