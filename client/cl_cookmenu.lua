@@ -80,32 +80,6 @@ RegisterNetEvent('bd-irishpubjob:client:OpenCookMenu', function()
     lib.showContext('irishpub_cook_menu')
 end)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-if Config.InventorySystem == 'qs' then
-	RegisterNetEvent('bd-irishpubjob:client:MakeCheeseBurger', function()
-		local ingredients = QBCore.Functions.HasItem({'ip_supplies'})
-		if ingredients then
-			TriggerEvent('animations:client:EmoteCommandStart', {"mechanic4"})
-			TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 20.0, "grilling", 0.6)
-			QBCore.Functions.Progressbar("taco_stuff", "No problem..", 8000, false, true, {
-				disableMovement = true,
-				disableCarMovement = false,
-				disableMouse = false,
-				disableCombat = true,
-			}, {}, {}, {}, function() -- Done
-				TriggerServerEvent("bd-irishpubjob:server:MakeCheeseBurger")
-				TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["ip_supplies"], "remove", 1)
-				TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["ip_cheeseburger"], "add", 2)
-				TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-				TriggerEvent('bd-irishpubjob:client:cooking')
-			end, function() -- Cancel
-				QBCore.Functions.Notify("Okay then", "error")
-				TriggerEvent('bd-irishpubjob:client:cooking')
-			end)
-		else		
-			QBCore.Functions.Notify('You missing something.', 'error')
-		end
-	end)
-end
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- | CREATING BURGERS MENU | -----
 lib.registerContext({
