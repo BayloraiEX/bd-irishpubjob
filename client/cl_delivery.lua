@@ -628,10 +628,24 @@ local function spawnPeds()
         current.pedHandle = ped
 
         if Config.UseTarget then
-            exports['qb-target']:AddTargetEntity(ped, {
-                options = {{type = "client", event = "bd-irishpubjob:client:StartMenu", label = 'Talk To Supplier', icon = 'fa-solid fa-truck-ramp-box', job = Config.Jobname}},
-                distance = 2.0
-            })
+            if Config.TargetSystem == 'qb' then
+                exports['qb-target']:AddTargetEntity(ped, {
+                    options = {{type = "client", event = "bd-irishpubjob:client:StartMenu", label = 'Talk To Supplier', icon = 'fa-solid fa-truck-ramp-box', job = Config.Jobname}},
+                    distance = 2.0
+                })
+            elseif Config.TargetSystem == 'ox' then
+                exports.ox_target:addLocalEntity(ped, {
+                    {
+                        name = 'irishpub_delivery',
+                        event = 'bd-irishpubjob:client:StartMenu',
+                        icon = 'fa-solid fa-truck-ramp-box',
+                        label = 'Talk To Supplier',
+                        groups = {
+                            Config.Jobname
+                        },
+                    }
+                })
+            end
         else
             local options = current.zoneOptions
             if options then

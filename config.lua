@@ -12,7 +12,7 @@
 --]] 
 Config = {}
 Config.InventorySystem = 'qb' -- Supports 'qb' & 'ox'
-Config.TargetSystem = 'qb' -- Supports 'qb' & 'ox' ( Just use ox, its way better )
+Config.TargetSystem = 'ox' -- Supports 'qb' & 'ox' ( Just use ox, its way better )
 
 Config.UseTarget = true -- True = Use Target  | False = Use Polyzones
 Config.Jobname = 'irishpub' -- Job required to see target on ped
